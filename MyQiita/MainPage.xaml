@@ -10,10 +10,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Label Text="{Binding title}"
-                               FontSize="Medium" />
-                        <Label Text="{Binding id}"
-                               FontSize="Small" />
+                        <Button Text="{Binding title}"
+                                FontSize="Medium"
+                                Clicked="Item_Clicked"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

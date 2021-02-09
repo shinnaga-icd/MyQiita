@@ -29,5 +29,10 @@ namespace MyQiita
             ItemView.ItemsSource = items;
 
         }
+
+        async void Item_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new ItemPage());
+        }
     }
 }
