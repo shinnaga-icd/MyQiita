@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using MyQiita.Models;
+using MyQiita.Model;
 
 namespace MyQiita.Service
 {
