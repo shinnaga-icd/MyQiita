@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
 
-namespace MyQiita
+namespace MyQiita.View
 {
     public partial class ItemPage : ContentPage
     {
