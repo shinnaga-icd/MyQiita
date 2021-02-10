@@ -5,6 +5,8 @@ namespace MyQiita.Model
 {
     public class QiitaItem
     {
+        string _id, _title, _url;
+
         [JsonProperty("id")]
         public string id { get; set; }
 

@@ -22,6 +22,7 @@ namespace MyQiita.Service
             List<QiitaItem> items = null;
             try
             {
+                
                 HttpResponseMessage response = await _client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {

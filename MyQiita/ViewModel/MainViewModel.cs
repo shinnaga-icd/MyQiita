@@ -10,6 +10,14 @@ namespace MyQiita.ViewModel
     {
         private const string QiitaEndpoint = "https://qiita.com/api/v2/items?page=1&per_page=20";
 
+        private List<QiitaItem> qiitaItems;
+        public List<QiitaItem> QiitaItems
+        {
+            get { return qiitaItems; }
+            set { SetProperty<List<QiitaItem>>(ref qiitaItems, value); }
+        }
+
+
         public MainViewModel()
         {
             SetQiitaItems();
@@ -22,6 +30,5 @@ namespace MyQiita.ViewModel
             QiitaItems = items;
         }
 
-        public List<QiitaItem> QiitaItems { get; set; }
     }
 }
