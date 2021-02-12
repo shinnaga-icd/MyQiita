@@ -9,7 +9,8 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-        <ListView ItemsSource="{Binding QiitaItems}">
+        <ListView ItemsSource="{Binding QiitaItems}"
+                  ItemSelected="OnListViewItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell Text="{Binding title}"/>

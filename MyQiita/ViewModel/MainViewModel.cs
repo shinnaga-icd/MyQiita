@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 using MyQiita.Model;
 using MyQiita.Service;
+
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
 
 namespace MyQiita.ViewModel
 {
@@ -17,12 +23,12 @@ namespace MyQiita.ViewModel
             set { SetProperty<List<QiitaItem>>(ref qiitaItems, value); }
         }
 
-
         public MainViewModel()
         {
             SetQiitaItems();
         }
 
+        //ListViewにQiitaアイテムをセット
         async private void SetQiitaItems()
         {
             RestService restService = new RestService();
