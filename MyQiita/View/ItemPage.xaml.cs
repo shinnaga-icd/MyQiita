@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-
 using Xamarin.Forms;
+using MyQiita.Model;
 
-namespace MyQiita
+namespace MyQiita.View
 {
     public partial class ItemPage : ContentPage
     {
-        public ItemPage()
+        public ItemPage(QiitaItem item)
         {
             InitializeComponent();
+            BindingContext = item;
         }
     }
 }
