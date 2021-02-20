@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+using Prism.Navigation;
 using Xamarin.Forms;
+using MyQiita.View;
 using MyQiita.Model;
 using MyQiita.Service;
-
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+using Reactive.Bindings;
 
 namespace MyQiita.ViewModel
 {
@@ -16,6 +14,7 @@ namespace MyQiita.ViewModel
     {
         private const string QiitaEndpoint = "https://qiita.com/api/v2/items?page=1&per_page=20";
 
+        // Property
         private List<QiitaItem> qiitaItems;
         public List<QiitaItem> QiitaItems
         {
@@ -23,9 +22,14 @@ namespace MyQiita.ViewModel
             set { SetProperty<List<QiitaItem>>(ref qiitaItems, value); }
         }
 
-        public MainViewModel()
+        // Command
+        public ReactiveCommand ItemSelectCommand { get; } = new ReactiveCommand();
+
+        // Constructor
+        public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
             SetQiitaItems();
+            ItemSelectCommand.Subscribe(_ =>  NavigationService.NavigateAsync("NavigationPage/ItemPage"));
         }
 
         //ListViewにQiitaアイテムをセット

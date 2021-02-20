@@ -1,19 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:MyQiita.ViewModel"
              x:Class="MyQiita.View.MainPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True"
              Title="My Qiita">
-    <ContentPage.BindingContext>
-        <vm:MainViewModel/>
-    </ContentPage.BindingContext>
 
     <StackLayout>
-        <ListView ItemsSource="{Binding QiitaItems}"
-                  ItemSelected="OnListViewItemSelected">
+        <ListView ItemsSource="{Binding QiitaItems}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell Text="{Binding title}"/>
+                    <ImageCell Text="{Binding title}" Command="{Binding ItemSelectCommand}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

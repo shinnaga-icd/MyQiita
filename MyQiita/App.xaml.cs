@@ -2,10 +2,13 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MyQiita.View;
+using MyQiita.ViewModel;
+using Prism;
+using Prism.Ioc;
 
 namespace MyQiita
 {
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
@@ -24,6 +27,19 @@ namespace MyQiita
 
         protected override void OnResume()
         {
+        }
+
+        protected override async void OnInitialized()
+        {
+            InitializeComponent();
+
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>();
+            containerRegistry.RegisterForNavigation<ItemPage, ItemViewModel>();
         }
     }
 }

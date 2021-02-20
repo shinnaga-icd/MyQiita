@@ -1,12 +1,14 @@
 ﻿using System;
 using Xamarin.Forms;
+using Prism.Navigation;
 
 namespace MyQiita.ViewModel
 {
     public class ItemViewModel : ViewModelBase
     {
-        public ItemViewModel()
+        public ItemViewModel(INavigationService navigationService) : base(navigationService)
         {
+
         }
     }
 }

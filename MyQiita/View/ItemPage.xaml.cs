@@ -6,10 +6,9 @@ namespace MyQiita.View
 {
     public partial class ItemPage : ContentPage
     {
-        public ItemPage(QiitaItem item)
+        public ItemPage()
         {
             InitializeComponent();
-            BindingContext = item;
         }
     }
 }
