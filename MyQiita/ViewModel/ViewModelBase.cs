@@ -1,35 +1,18 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.ComponentModel;
+using Prism.Mvvm;
 using Prism.Navigation;
+using Reactive.Bindings;
 
 namespace MyQiita.ViewModel
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : BindableBase, INavigationAware, IInitialize, IDestructible, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected INavigationService NavigationService { get; private set; }
+        public ReactiveProperty<string> Title { get; } = new ReactiveProperty<string>();
 
-        public ViewModelBase(INavigationService navigationService)
-        {
-            NavigationService = navigationService;
-        }
+        public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
+        public virtual void OnNavigatedTo(INavigationParameters parameters) { }
+        public virtual void Initialize(INavigationParameters parameters) { }
 
-
-        protected bool SetProperty<T>(ref T storage, T value,
-                                      [CallerMemberName] string prooertyName = null)
-        {
-            if (Object.Equals(storage, value))
-                return false;
-
-            storage = value;
-            OnPropertyChanged(prooertyName);
-            return true;
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public virtual void Destroy() { }
     }
 }

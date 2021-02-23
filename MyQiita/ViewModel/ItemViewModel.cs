@@ -6,7 +6,7 @@ namespace MyQiita.ViewModel
 {
     public class ItemViewModel : ViewModelBase
     {
-        public ItemViewModel(INavigationService navigationService) : base(navigationService)
+        public ItemViewModel(INavigationService navigationService)
         {
 
         }
