@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Reactive.Bindings;
@@ -7,6 +8,13 @@ namespace MyQiita.ViewModel
 {
     public class ViewModelBase : BindableBase, INavigationAware, IInitialize, IDestructible, INotifyPropertyChanged
     {
+        protected INavigationService _navigationService;
+
+        public ViewModelBase(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
         public ReactiveProperty<string> Title { get; } = new ReactiveProperty<string>();
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters) { }

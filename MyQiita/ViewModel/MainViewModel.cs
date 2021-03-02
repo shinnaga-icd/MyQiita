@@ -14,7 +14,6 @@ namespace MyQiita.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private const string QiitaEndpoint = "https://qiita.com/api/v2/items?page=1&per_page=20";
-        private readonly INavigationService _navigationService;
 
         // Property
         private List<QiitaItem> qiitaItems;
@@ -23,15 +22,16 @@ namespace MyQiita.ViewModel
             get { return qiitaItems; }
             set { SetProperty<List<QiitaItem>>(ref qiitaItems, value); }
         }
-                    
-        // Constructor
-        public MainViewModel(INavigationService navigationService) 
-        {
-            this._navigationService = navigationService;
-            SetQiitaItems();
 
+        public ReactiveProperty<string> test { get; } = new ReactiveProperty<string>();
+    
+        // Constructor
+        public MainViewModel(INavigationService navigationService) : base(navigationService)
+        {
             Title.Value = "My Qiita";
 
+            Title.Subscribe(x => );
+            SetQiitaItems();
             ItemSelectCommand = new DelegateCommand(OnItemSelectCommand);
         }
 
