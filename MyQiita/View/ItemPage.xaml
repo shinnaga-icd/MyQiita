@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:MyQiita.ViewModel"
-             x:Class="MyQiita.View.ItemPage">
+             x:Class="MyQiita.View.ItemPage"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True"
+             >
     <ContentPage.Content>
         <StackLayout>
             <WebView VerticalOptions="FillAndExpand"
-                     Source="{Binding url}"/>
+                     Source="{Binding Url}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

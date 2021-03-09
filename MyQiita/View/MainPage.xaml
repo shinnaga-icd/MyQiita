@@ -7,10 +7,10 @@
              NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True"
              Title="{Binding Title}">
     <StackLayout>
-        <ListView ItemsSource="{Binding QiitaItems}">
+        <ListView ItemsSource="{Binding QiitaItems}" SelectedItem="{Binding SelectedItem.Value}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell Text="{Binding title}" Command="{Binding ItemSelectCommand}"/>
+                    <TextCell Text="{Binding title}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

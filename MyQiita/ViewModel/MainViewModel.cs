@@ -2,6 +2,8 @@
 using System.Windows.Input;
 using System.Collections.Generic;
 using System.Reactive.Linq;
+using System.Linq;
+using Xamarin.Forms;
 using Prism.Events;
 using Prism.Commands;
 using Prism.Navigation;
@@ -17,27 +19,21 @@ namespace MyQiita.ViewModel
         private const string QiitaEndpoint = "https://qiita.com/api/v2/items?page=1&per_page=20";
 
         // Property
-        private List<QiitaItem> _qiitaItems;
-        public List<QiitaItem> QiitaItems
-        {
-            get => _qiitaItems;
-            set => SetProperty<List<QiitaItem>>(ref this._qiitaItems, value);
-        }
-    
+        public ReactiveCollection<QiitaItem> QiitaItems { get; set; } = new ReactiveCollection<QiitaItem>();
+        public ReactiveProperty<QiitaItem> SelectedItem { get; set; } = new ReactiveProperty<QiitaItem>();
+        public ICommand ItemSelectCommand { get; private set; }
+
         // Constructor
         public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "My Qiita";
 
             SetQiitaItems();
-            ItemSelectCommand = new DelegateCommand(OnItemSelectCommand);
-        }
 
-        // Command
-        public ICommand ItemSelectCommand { get; }
-        private void OnItemSelectCommand()
-        {
-            _navigationService.NavigateAsync(Navigate.Item, (NavigateParams.ItemURL, "https://google.com"));
+            SelectedItem.Where(x => x != null).Subscribe(x =>
+            {
+                _navigationService.NavigateAsync(Navigate.Item, (NavigateParams.ItemURL, x.url));
+            });
         }
 
         //ListViewにQiitaアイテムをセット
@@ -45,7 +41,7 @@ namespace MyQiita.ViewModel
         {
             RestService restService = new RestService();
             List<QiitaItem> items = await restService.GetQiitaItemsAsync(QiitaEndpoint);
-            QiitaItems = items;
+            items.ForEach(x => QiitaItems.Add(x));
         }
 
     }
