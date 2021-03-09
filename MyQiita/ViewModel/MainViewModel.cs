@@ -7,10 +7,10 @@ using Xamarin.Forms;
 using Prism.Events;
 using Prism.Commands;
 using Prism.Navigation;
+using Reactive.Bindings;
 using MyQiita.Model;
 using MyQiita.Service;
 using MyQiita.Navigation;
-using Reactive.Bindings;
 
 namespace MyQiita.ViewModel
 {
@@ -23,7 +23,6 @@ namespace MyQiita.ViewModel
         public ReactiveProperty<QiitaItem> SelectedItem { get; set; } = new ReactiveProperty<QiitaItem>();
         public ICommand ItemSelectCommand { get; private set; }
 
-        // Constructor
         public MainViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "My Qiita";
