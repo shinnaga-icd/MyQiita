@@ -5,16 +5,12 @@ namespace MyQiita.Model
 {
     public class QiitaItem
     {
-        string _id, _title, _url;
+        public virtual string id { get; set; }
 
-        [JsonProperty("id")]
-        public string id { get; set; }
+        public virtual string title { get; set; }
 
-        [JsonProperty("title")]
-        public string title { get; set; }
+        public virtual string url { get; set; }
 
-        [JsonProperty("url")]
-        public string url { get; set; }
-
+        public virtual int likesCount { get; set; }
     }
 }

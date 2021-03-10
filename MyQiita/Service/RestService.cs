@@ -17,9 +17,9 @@ namespace MyQiita.Service
             _client = new HttpClient();
         }
 
-        public async Task<List<QiitaItem>> GetQiitaItemsAsync(string uri)
+        public async Task<List<QiitaRestItem>> GetQiitaItemsAsync(string uri)
         {
-            List<QiitaItem> items = null;
+            List<QiitaRestItem> items = new List<QiitaRestItem>();
             try
             {
                 
@@ -27,7 +27,7 @@ namespace MyQiita.Service
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    items = JsonConvert.DeserializeObject<List<QiitaItem>>(content);
+                    items = JsonConvert.DeserializeObject<List<QiitaRestItem>>(content);
                 }
             }catch(Exception ex)
             {
