@@ -11,12 +11,13 @@ using Reactive.Bindings;
 using MyQiita.Model;
 using MyQiita.Service;
 using MyQiita.Navigation;
+using MyQiita.Common;
 
 namespace MyQiita.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        private const string QiitaEndpoint = "https://qiita.com/api/v2/items?page=1&per_page=20";
+        private const string QiitaEndpoint = Constants.QiitaApiEndpoint + "/v2/items?page=1&per_page=20";
 
         // Property
         public ReactiveCollection<QiitaItem> QiitaItems { get; set; } = new ReactiveCollection<QiitaItem>();

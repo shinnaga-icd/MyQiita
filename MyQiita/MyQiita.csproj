@@ -24,5 +24,6 @@
     <Folder Include="Model\" />
     <Folder Include="View\" />
     <Folder Include="Navigation\" />
+    <Folder Include="Common\" />
   </ItemGroup>
 </Project>
