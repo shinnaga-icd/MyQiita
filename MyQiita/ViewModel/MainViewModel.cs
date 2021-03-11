@@ -39,12 +39,13 @@ namespace MyQiita.ViewModel
         //ListViewにQiitaアイテムをセット
         async private void SetQiitaItems()
         {
-            RestService restService = new RestService();
-            List<QiitaRestItem> items = await restService.GetQiitaItemsAsync(QiitaEndpoint);
-            // ToDo
-            //ScrapingService scrapingService = new ScrapingService();
-            //List<QiitaScrapingItem> items = await scrapingService.GetQiitaTrends();
-            items.ForEach(x => QiitaItems.Add(x));
+            //RestService restService = new RestService();
+            //List<QiitaRestItem> items = await restService.GetQiitaItemsAsync(QiitaEndpoint);
+            ScrapingService scrapingService = new ScrapingService();
+            QiitaScrapingItem item = await scrapingService.GetQiitaTrends();
+
+            item.root.trend.edges.ForEach(x =>
+                QiitaItems.Add(new QiitaItem(id: x.node.uuid, title: x.node.title, url: x.node.linkUrl, likesCount: x.node.likesCount)));
         }
 
     }

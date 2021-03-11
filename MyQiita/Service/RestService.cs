@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,9 +16,9 @@ namespace MyQiita.Service
             _client = new HttpClient();
         }
 
-        public async Task<List<QiitaRestItem>> GetQiitaItemsAsync(string uri)
+        public async Task<QiitaRestItem> GetQiitaItemsAsync(string uri)
         {
-            List<QiitaRestItem> items = new List<QiitaRestItem>();
+            QiitaRestItem qiitaRestItem = new QiitaRestItem();
             try
             {
                 
@@ -27,14 +26,14 @@ namespace MyQiita.Service
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    items = JsonConvert.DeserializeObject<List<QiitaRestItem>>(content);
+                    qiitaRestItem.root = JsonConvert.DeserializeObject<QiitaRestItem.Root>(content);
                 }
             }catch(Exception ex)
             {
                 Debug.WriteLine("\tERROR {0}", ex.Message);
             }
 
-            return items;
+            return qiitaRestItem;
         }
     }
 }

@@ -1,16 +1,24 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace MyQiita.Model
+﻿namespace MyQiita.Model
 {
     public class QiitaItem
     {
-        public virtual string id { get; set; }
+        public QiitaItem(string id = "",
+                         string title = "",
+                         string url = "",
+                         int likesCount = 0)
+        {
+            this.id = id;
+            this.title = title;
+            this.url = url;
+            this.likesCount = likesCount;
+        }
 
-        public virtual string title { get; set; }
+        public string id { get; set; }
 
-        public virtual string url { get; set; }
+        public string title { get; set; }
 
-        public virtual int likesCount { get; set; }
+        public string url { get; set; }
+
+        public int likesCount { get; set; }
     }
 }

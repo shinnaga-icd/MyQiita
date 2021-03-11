@@ -11,13 +11,9 @@ namespace MyQiita.Service
 {
     public class ScrapingService
     {
-        public ScrapingService()
+        public async Task<QiitaScrapingItem> GetQiitaTrends()
         {
-        }
-        
-        public async Task<List<QiitaScrapingItem>> GetQiitaTrends()
-        {
-            List<QiitaScrapingItem> items = new List<QiitaScrapingItem>();
+            QiitaScrapingItem qiitaScrapingItem = new QiitaScrapingItem();
             string selector = "div.p-home_container script.js-react-on-rails-component";
 
             try
@@ -29,14 +25,14 @@ namespace MyQiita.Service
                 var cells = document.QuerySelector(selector);
 
                 //Json Convert
-                items = JsonConvert.DeserializeObject<List<QiitaScrapingItem>>(cells.TextContent);
+                qiitaScrapingItem.root = JsonConvert.DeserializeObject<QiitaScrapingItem.Root>(cells.TextContent);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("\tERROR {0}", ex.Message);
             }
 
-            return items;
+            return qiitaScrapingItem;
         }
     }
 }
