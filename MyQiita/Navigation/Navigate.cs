@@ -4,7 +4,7 @@ namespace MyQiita.Navigation
 {
     public static class Navigate
     {
-        public const string Main = nameof(MainPage);
+        public const string Home = nameof(HomePage);
         public const string Item = nameof(ItemPage);
     }
 }

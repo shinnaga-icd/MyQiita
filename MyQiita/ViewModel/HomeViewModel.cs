@@ -15,7 +15,7 @@ using MyQiita.Common;
 
 namespace MyQiita.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase
     {
         private const string QiitaEndpoint = Constants.QiitaApiEndpoint + "/v2/items?page=1&per_page=20";
 
@@ -24,10 +24,8 @@ namespace MyQiita.ViewModel
         public ReactiveProperty<QiitaItem> SelectedItem { get; set; } = new ReactiveProperty<QiitaItem>();
         public ICommand ItemSelectCommand { get; private set; }
 
-        public MainViewModel(INavigationService navigationService) : base(navigationService)
+        public HomeViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "My Qiita";
-
             SetQiitaItems();
 
             SelectedItem.Where(x => x != null).Subscribe(x =>

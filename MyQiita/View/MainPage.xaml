@@ -1,19 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyQiita.View.MainPage"
-             xmlns:prism="http://prismlibrary.com"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True"
-             Title="{Binding Title}">
-    <StackLayout>
-        <ListView ItemsSource="{Binding QiitaItems}" SelectedItem="{Binding SelectedItem.Value}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding title}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
-
-</ContentPage>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="MyQiita.View.MainPage"
+            xmlns:myqiita="clr-namespace:MyQiita.View"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            >
+  <!--Pages can be added as references or inline-->
+    <myqiita:HomePage Title="Home"></myqiita:HomePage>
+    <myqiita:SettingPage Title="Settings"></myqiita:SettingPage>
+</TabbedPage>
