@@ -4,9 +4,10 @@
             x:Class="MyQiita.View.MainPage"
             xmlns:myqiita="clr-namespace:MyQiita.View"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            NavigationPage.HasNavigationBar="False"
             android:TabbedPage.ToolbarPlacement="Bottom"
             >
   <!--Pages can be added as references or inline-->
-    <myqiita:HomePage Title="Home"></myqiita:HomePage>
-    <myqiita:SettingPage Title="Settings"></myqiita:SettingPage>
+    <myqiita:HomePage Title="Home" IconImageSource="home.png"></myqiita:HomePage>
+    <myqiita:SettingPage Title="Setting" IconImageSource="setting.png"></myqiita:SettingPage>
 </TabbedPage>
