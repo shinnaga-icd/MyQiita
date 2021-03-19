@@ -10,7 +10,7 @@
         <ListView ItemsSource="{Binding QiitaItems}" SelectedItem="{Binding SelectedItem.Value}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding title}" />
+                    <ImageCell Text="{Binding title}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

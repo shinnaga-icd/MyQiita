@@ -9,5 +9,6 @@
             >
   <!--Pages can be added as references or inline-->
     <myqiita:HomePage Title="Home" IconImageSource="home.png"></myqiita:HomePage>
+    <myqiita:ItemListPage Title="Search" IconImageSource="search.png"></myqiita:ItemListPage>
     <myqiita:SettingPage Title="Setting" IconImageSource="setting.png"></myqiita:SettingPage>
 </TabbedPage>

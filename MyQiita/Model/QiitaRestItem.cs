@@ -64,5 +64,18 @@ namespace MyQiita.Model
 
         //property
         public Root root { get; set; }
+
+        public QiitaItem QiitaItem
+        {
+            get
+            {
+                return root == null ?
+                    new QiitaItem()
+                  : new QiitaItem(id: root.id,
+                                  title: root.title,
+                                  url: root.url,
+                                  likesCount: root.likes_count);
+            }
+        }
     }
 }

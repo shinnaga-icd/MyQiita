@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Windows.Input;
-using System.Collections.Generic;
-using System.Reactive.Linq;
 using System.Linq;
-using Xamarin.Forms;
-using Prism.Events;
-using Prism.Commands;
+using System.Reactive.Linq;
+using System.Collections.Generic;
 using Prism.Navigation;
 using Reactive.Bindings;
+using MyQiita.Common;
 using MyQiita.Model;
 using MyQiita.Service;
 using MyQiita.Navigation;
-using MyQiita.Common;
 
 namespace MyQiita.ViewModel
 {
-    public class HomeViewModel : ViewModelBase
+    public class ItemListViewModel : ViewModelBase
     {
-        // Property
         public ReactiveCollection<QiitaItem> QiitaItems { get; set; } = new ReactiveCollection<QiitaItem>();
         public ReactiveProperty<QiitaItem> SelectedItem { get; set; } = new ReactiveProperty<QiitaItem>();
         public ICommand ItemSelectCommand { get; private set; }
 
-        public HomeViewModel(INavigationService navigationService) : base(navigationService)
+        private const string QiitaEndpoint = Constants.QiitaApiEndpoint + "/v2/items?page=1&per_page=20";
+
+        public ItemListViewModel(INavigationService navigationService) : base(navigationService)
         {
             SetQiitaItems();
 
@@ -37,11 +35,12 @@ namespace MyQiita.ViewModel
         /// </summary>
         async private void SetQiitaItems()
         {
-            ScrapingService scrapingService = new ScrapingService();
-            QiitaScrapingItem item = await scrapingService.GetQiitaTrends();
+            RestService restService = new RestService();
+            List<QiitaRestItem> items = await restService.GetQiitaItemsAsync(QiitaEndpoint);
 
-            item.QiitaItems.ToList().ForEach(x => QiitaItems.Add(x));
+            Console.WriteLine("test");
+
+            //items.ForEach(x => QiitaItems.Add(x.QiitaItem));
         }
-
     }
 }

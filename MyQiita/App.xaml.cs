@@ -1,9 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using MyQiita.View;
 using MyQiita.ViewModel;
-using Prism;
 using Prism.Ioc;
 
 namespace MyQiita
@@ -41,6 +38,7 @@ namespace MyQiita
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
             containerRegistry.RegisterForNavigation<ItemPage, ItemViewModel>();
+            containerRegistry.RegisterForNavigation<ItemListPage, ItemListViewModel>();
         }
     }
 }

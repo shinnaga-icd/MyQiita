@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Linq;
 using Newtonsoft.Json;
 using MyQiita.Model;
 
@@ -16,17 +18,18 @@ namespace MyQiita.Service
             _client = new HttpClient();
         }
 
-        public async Task<QiitaRestItem> GetQiitaItemsAsync(string uri)
+        public async Task<List<QiitaRestItem>> GetQiitaItemsAsync(string uri)
         {
-            QiitaRestItem qiitaRestItem = new QiitaRestItem();
+            List<QiitaRestItem> qiitaRestItem = new List<QiitaRestItem>();
             try
             {
-                
                 HttpResponseMessage response = await _client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    qiitaRestItem.root = JsonConvert.DeserializeObject<QiitaRestItem.Root>(content);
+                    var arrayItem = JsonConvert.DeserializeObject<QiitaRestItem[]>(content);
+
+                    qiitaRestItem = arrayItem.ToList();
                 }
             }catch(Exception ex)
             {
