@@ -59,22 +59,23 @@ namespace MyQiita.Model
             public DateTime updated_at { get; set; }
             public string url { get; set; }
             public User user { get; set; }
-            public int page_views_count { get; set; }
+            public int? page_views_count { get; set; }
         }
 
         //property
-        public Root root { get; set; }
+        public List<Root> root { get; set; }
 
-        public QiitaItem QiitaItem
+        public IEnumerable<QiitaItem> QiitaItems
         {
             get
             {
-                return root == null ?
-                    new QiitaItem()
-                  : new QiitaItem(id: root.id,
-                                  title: root.title,
-                                  url: root.url,
-                                  likesCount: root.likes_count);
+                foreach (var item in root)
+                {
+                    yield return new QiitaItem(id: item.id,
+                                               title: item.title,
+                                               url: item.url,
+                                               likesCount: item.likes_count);
+                }
             }
         }
     }

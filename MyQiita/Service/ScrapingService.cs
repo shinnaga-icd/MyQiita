@@ -14,7 +14,7 @@ namespace MyQiita.Service
         public async Task<QiitaScrapingItem> GetQiitaTrends()
         {
             QiitaScrapingItem qiitaScrapingItem = new QiitaScrapingItem();
-            string selector = "div.p-home_container script.js-react-on-rails-component";
+            string selector = Constants.ScrapingSelectorQiitaTrend;
 
             try
             {

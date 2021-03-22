@@ -33,12 +33,12 @@ namespace MyQiita.ViewModel
         }
 
         /// <summary>
-        /// ListViewにQiitaItemをセット
+        /// ListViewにQiitaItemをセット  
         /// </summary>
         async private void SetQiitaItems()
         {
             ScrapingService scrapingService = new ScrapingService();
-            QiitaScrapingItem item = await scrapingService.GetQiitaTrends();
+            var item = await scrapingService.GetQiitaTrends();
 
             item.QiitaItems.ToList().ForEach(x => QiitaItems.Add(x));
         }

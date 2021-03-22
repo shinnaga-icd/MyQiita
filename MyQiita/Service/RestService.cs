@@ -18,18 +18,17 @@ namespace MyQiita.Service
             _client = new HttpClient();
         }
 
-        public async Task<List<QiitaRestItem>> GetQiitaItemsAsync(string uri)
+        public async Task<QiitaRestItem> GetQiitaItemsAsync(string uri)
         {
-            List<QiitaRestItem> qiitaRestItem = new List<QiitaRestItem>();
+            QiitaRestItem qiitaRestItem = new QiitaRestItem();
             try
             {
                 HttpResponseMessage response = await _client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    var arrayItem = JsonConvert.DeserializeObject<QiitaRestItem[]>(content);
+                    qiitaRestItem.root = JsonConvert.DeserializeObject<List<QiitaRestItem.Root>>(content);
 
-                    qiitaRestItem = arrayItem.ToList();
                 }
             }catch(Exception ex)
             {

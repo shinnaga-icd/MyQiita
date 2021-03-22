@@ -36,11 +36,9 @@ namespace MyQiita.ViewModel
         async private void SetQiitaItems()
         {
             RestService restService = new RestService();
-            List<QiitaRestItem> items = await restService.GetQiitaItemsAsync(QiitaEndpoint);
+            var item = await restService.GetQiitaItemsAsync(QiitaEndpoint);
 
-            Console.WriteLine("test");
-
-            //items.ForEach(x => QiitaItems.Add(x.QiitaItem));
+            item.QiitaItems.ToList().ForEach(x => QiitaItems.Add(x));
         }
     }
 }

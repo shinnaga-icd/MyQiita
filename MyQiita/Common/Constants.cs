@@ -13,5 +13,10 @@ namespace MyQiita.Common
         /// Qiita API EndPoint
         /// </summary>
         public const string QiitaApiEndpoint = "https://qiita.com/api";
+
+        /// <summary>
+        /// Qiita Trend Selector
+        /// </summary>
+        public const string ScrapingSelectorQiitaTrend = "div.p-home_container script.js-react-on-rails-component";
     }
 }
