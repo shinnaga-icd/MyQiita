@@ -30,5 +30,11 @@ namespace MyQiita.iOS
 
             return base.FinishedLaunching(app, options);
         }
+
+        public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+        {
+            Console.WriteLine(url);
+            return base.OpenUrl(app, url, options);
+        }
     }
 }

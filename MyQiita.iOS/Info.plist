@@ -33,5 +33,20 @@
 	<string>MyQiita</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>jp.myqiita</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>myqiita</string>
+			</array>
+			<key>CFBundleURLIconFile</key>
+			<string>Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+	</array>
 </dict>
 </plist>

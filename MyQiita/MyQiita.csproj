@@ -26,5 +26,6 @@
     <Folder Include="View\" />
     <Folder Include="Navigation\" />
     <Folder Include="Common\" />
+    <Folder Include="View\Control\" />
   </ItemGroup>
 </Project>

@@ -39,6 +39,7 @@ namespace MyQiita
             containerRegistry.RegisterForNavigation<HomePage, HomeViewModel>();
             containerRegistry.RegisterForNavigation<ItemPage, ItemViewModel>();
             containerRegistry.RegisterForNavigation<ItemListPage, ItemListViewModel>();
+            containerRegistry.RegisterForNavigation<SettingPage, SettingViewModel>();
         }
     }
 }
