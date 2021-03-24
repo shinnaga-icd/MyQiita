@@ -2,8 +2,12 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="MyQiita.View.SettingPage">
+    x:Class="MyQiita.View.SettingPage"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False"
+    Title="{Binding Title}">
     <ContentPage.Content>
-        <Button Text="login" Clicked="{Binding LoginCommand}"></Button>
+        <Button Text="login" Command="{Binding LoginCommand}"></Button>
     </ContentPage.Content>
 </ContentPage>

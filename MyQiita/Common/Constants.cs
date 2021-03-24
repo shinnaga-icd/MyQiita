@@ -22,7 +22,7 @@ namespace MyQiita.Common
         /// <summary>
         /// Qiita Oauth URL
         /// </summary>
-        public const string QiitaOauthUrl = "http://api/v2/oauth/authorize";
+        public const string QiitaOauthUrl = "http://qiita.com/api/v2/oauth/authorize";
 
         /// <summary>
         /// Qiita Oauth ClientID

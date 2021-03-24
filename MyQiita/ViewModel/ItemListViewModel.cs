@@ -16,7 +16,6 @@ namespace MyQiita.ViewModel
     {
         public ReactiveCollection<QiitaItem> QiitaItems { get; set; } = new ReactiveCollection<QiitaItem>();
         public ReactiveProperty<QiitaItem> SelectedItem { get; set; } = new ReactiveProperty<QiitaItem>();
-        public ICommand ItemSelectCommand { get; private set; }
 
         private const string QiitaEndpoint = Constants.QiitaApiEndpoint + "/v2/items?page=1&per_page=20";
 

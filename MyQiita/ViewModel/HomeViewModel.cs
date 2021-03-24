@@ -20,7 +20,6 @@ namespace MyQiita.ViewModel
         // Property
         public ReactiveCollection<QiitaItem> QiitaItems { get; set; } = new ReactiveCollection<QiitaItem>();
         public ReactiveProperty<QiitaItem> SelectedItem { get; set; } = new ReactiveProperty<QiitaItem>();
-        public ICommand ItemSelectCommand { get; private set; }
 
         public HomeViewModel(INavigationService navigationService) : base(navigationService)
         {
