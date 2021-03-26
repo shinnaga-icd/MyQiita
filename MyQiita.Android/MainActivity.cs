@@ -10,14 +10,6 @@ using Android.OS;
 namespace MyQiita.Droid
 {
     [Activity(Label = "MyQiita", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
-    [IntentFilter(new [] { Android.Content.Intent.ActionView },
-                           Categories = new []
-                           {
-                               Android.Content.Intent.CategoryDefault,
-                               Android.Content.Intent.CategoryBrowsable
-                           },
-                           DataScheme = "myqiita"
-        )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -37,5 +29,12 @@ namespace MyQiita.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            Xamarin.Essentials.Platform.OnResume();
+        }
+
     }
 }

@@ -25,6 +25,11 @@ namespace MyQiita.Common
         public const string QiitaOauthUrl = "http://qiita.com/api/v2/oauth/authorize";
 
         /// <summary>
+        /// Qiita Redirect URL
+        /// </summary>
+        public const string QiitaRedirectUrl = "myqiita://oauth";
+
+        /// <summary>
         /// Qiita Oauth ClientID
         /// </summary>
         public const string QiitaOauthClientID = "805367f8e745b14255988e05f0f85da4f790b931";

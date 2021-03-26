@@ -18,6 +18,7 @@
     <PackageReference Include="Prism.Forms" Version="8.0.0.1909" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
     <PackageReference Include="AngleSharp" Version="0.14.0" />
+    <PackageReference Include="IdentityModel" Version="5.1.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModel\" />
