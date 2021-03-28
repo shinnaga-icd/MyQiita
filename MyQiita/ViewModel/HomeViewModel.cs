@@ -38,10 +38,7 @@ namespace MyQiita.ViewModel
         {
             var item = await (new ScrapingService()).GetQiitaTrends(Constants.QiitaUrl, Constants.ScrapingSelectorQiitaTrend);
 
-            item.trend.edges.ForEach(x => QiitaItems.Add(new QiitaItem(id: x.node.uuid,
-                                                                       title: x.node.title,
-                                                                       url: x.node.linkUrl,
-                                                                       likesCount: x.node.likesCount)));
+            item.trend.edges.ForEach(x => QiitaItems.Add(new(x)));
         }
 
     }

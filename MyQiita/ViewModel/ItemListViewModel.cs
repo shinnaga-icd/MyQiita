@@ -36,10 +36,7 @@ namespace MyQiita.ViewModel
         {
             var item = await (new RestService()).GetQiitaItemsAsync(QiitaEndpoint);
 
-            item.ForEach(x => QiitaItems.Add(new QiitaItem(id: x.id,
-                                                           title: x.title,
-                                                           url: x.url,
-                                                           likesCount: x.likes_count)));
+            item.ForEach(x => QiitaItems.Add(new(x)));
         }
     }
 }
