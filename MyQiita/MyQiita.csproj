@@ -32,6 +32,5 @@
     <Folder Include="Navigation\" />
     <Folder Include="Common\" />
     <Folder Include="View\Control\" />
-    <Folder Include="Model\Interface\" />
   </ItemGroup>
 </Project>
