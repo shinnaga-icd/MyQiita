@@ -5,14 +5,14 @@ namespace MyQiita.Common
     {
 
         /// <summary>
-        /// Qiita Home EndPoint
+        /// Qiita EndPoint
         /// </summary>
-        public const string QiitaEndPoint = "https://qiita.com";
+        public const string QiitaUrl = "https://qiita.com";
 
         /// <summary>
         /// Qiita API EndPoint
         /// </summary>
-        public const string QiitaApiEndpoint = "https://qiita.com/api";
+        public const string QiitaApiUrl = "https://qiita.com/api";
 
         /// <summary>
         /// Qiita Trend Selector
@@ -20,14 +20,19 @@ namespace MyQiita.Common
         public const string ScrapingSelectorQiitaTrend = "div.p-home_container script.js-react-on-rails-component";
 
         /// <summary>
-        /// Qiita Oauth URL
+        /// Qiita URL OAuth
         /// </summary>
         public const string QiitaOauthUrl = "http://qiita.com/api/v2/oauth/authorize";
 
         /// <summary>
-        /// Qiita Redirect URL
+        /// Qiita URL CallBack
         /// </summary>
-        public const string QiitaRedirectUrl = "myqiita://oauth";
+        public const string QiitaCallBackUrl = "myqiita://oauth";
+
+        /// <summary>
+        /// Qiita URL Redirect
+        /// </summary>
+        public const string QiitaRedirectUrl = "https://qiita.com/api/v2/access_tokens";
 
         /// <summary>
         /// Qiita Oauth ClientID

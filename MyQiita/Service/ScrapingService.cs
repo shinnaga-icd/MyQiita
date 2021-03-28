@@ -11,28 +11,27 @@ namespace MyQiita.Service
 {
     public class ScrapingService
     {
-        public async Task<QiitaScrapingItem> GetQiitaTrends()
+        public async Task<QiitaScrapingItem> GetQiitaTrends(string address, string selector)
         {
-            QiitaScrapingItem qiitaScrapingItem = new QiitaScrapingItem();
-            string selector = Constants.ScrapingSelectorQiitaTrend;
+            QiitaScrapingItem _deserializeObject = new();
 
             try
             {
                 //scraping
                 var config = Configuration.Default.WithDefaultLoader();
                 var context = BrowsingContext.New(config);
-                var document = await context.OpenAsync(Constants.QiitaEndPoint);
+                var document = await context.OpenAsync(address);
                 var cells = document.QuerySelector(selector);
 
                 //Json Convert
-                qiitaScrapingItem.root = JsonConvert.DeserializeObject<QiitaScrapingItem.Root>(cells.TextContent);
+                _deserializeObject = JsonConvert.DeserializeObject<QiitaScrapingItem>(cells.TextContent);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("\tERROR {0}", ex.Message);
             }
 
-            return qiitaScrapingItem;
+            return _deserializeObject;
         }
     }
 }

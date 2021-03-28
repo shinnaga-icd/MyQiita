@@ -42,41 +42,21 @@ namespace MyQiita.Model
             public string website_url { get; set; }
         }
 
-        public class Root
-        {
-            public string rendered_body { get; set; }
-            public string body { get; set; }
-            public bool coediting { get; set; }
-            public int comments_count { get; set; }
-            public DateTime created_at { get; set; }
-            public Group group { get; set; }
-            public string id { get; set; }
-            public int likes_count { get; set; }
-            public bool @private { get; set; }
-            public int reactions_count { get; set; }
-            public List<Tag> tags { get; set; }
-            public string title { get; set; }
-            public DateTime updated_at { get; set; }
-            public string url { get; set; }
-            public User user { get; set; }
-            public int? page_views_count { get; set; }
-        }
-
-        //property
-        public List<Root> root { get; set; }
-
-        public IEnumerable<QiitaItem> QiitaItems
-        {
-            get
-            {
-                foreach (var item in root)
-                {
-                    yield return new QiitaItem(id: item.id,
-                                               title: item.title,
-                                               url: item.url,
-                                               likesCount: item.likes_count);
-                }
-            }
-        }
+        public string rendered_body { get; set; }
+        public string body { get; set; }
+        public bool coediting { get; set; }
+        public int comments_count { get; set; }
+        public DateTime created_at { get; set; }
+        public Group group { get; set; }
+        public string id { get; set; }
+        public int likes_count { get; set; }
+        public bool @private { get; set; }
+        public int reactions_count { get; set; }
+        public List<Tag> tags { get; set; }
+        public string title { get; set; }
+        public DateTime updated_at { get; set; }
+        public string url { get; set; }
+        public User user { get; set; }
+        public int? page_views_count { get; set; }
     }
 }

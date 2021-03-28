@@ -17,7 +17,7 @@ namespace MyQiita.ViewModel
         public ReactiveCollection<QiitaItem> QiitaItems { get; set; } = new ReactiveCollection<QiitaItem>();
         public ReactiveProperty<QiitaItem> SelectedItem { get; set; } = new ReactiveProperty<QiitaItem>();
 
-        private const string QiitaEndpoint = Constants.QiitaApiEndpoint + "/v2/items?page=1&per_page=20";
+        private const string QiitaEndpoint = Constants.QiitaApiUrl + "/v2/items?page=1&per_page=20";
 
         public ItemListViewModel(INavigationService navigationService) : base(navigationService)
         {
@@ -34,10 +34,12 @@ namespace MyQiita.ViewModel
         /// </summary>
         async private void SetQiitaItems()
         {
-            RestService restService = new RestService();
-            var item = await restService.GetQiitaItemsAsync(QiitaEndpoint);
+            var item = await (new RestService()).GetQiitaItemsAsync(QiitaEndpoint);
 
-            item.QiitaItems.ToList().ForEach(x => QiitaItems.Add(x));
+            item.ForEach(x => QiitaItems.Add(new QiitaItem(id: x.id,
+                                                           title: x.title,
+                                                           url: x.url,
+                                                           likesCount: x.likes_count)));
         }
     }
 }

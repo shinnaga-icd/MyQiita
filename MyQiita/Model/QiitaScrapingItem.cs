@@ -51,27 +51,6 @@ namespace MyQiita.Model
             public List<Edge> edges { get; set; }
         }
 
-        public class Root
-        {
-            public Trend trend { get; set; }
-        }
-
-        //property
-        public Root root { get; set; }
-
-        //iterator
-        public IEnumerable<QiitaItem> QiitaItems
-        {
-            get
-            {
-                foreach (var item in root.trend.edges)
-                {
-                    yield return new QiitaItem(id: item.node.uuid,
-                                               title: item.node.title,
-                                               url: item.node.linkUrl,
-                                               likesCount: item.node.likesCount);
-                }
-            }
-        }
+        public Trend trend { get; set; }
     }   
 }

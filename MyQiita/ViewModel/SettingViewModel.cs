@@ -24,17 +24,18 @@ namespace MyQiita.ViewModel
             try
             {
                 //Create AuthRequest
-                var authRequest = new RequestUrl(Constants.QiitaRedirectUrl);
+                var authRequest = new RequestUrl(Constants.QiitaOauthUrl);
                 var param = new Parameters();
                 param.Add("client_id", Constants.QiitaOauthClientID);
                 param.Add("scope", "read_qiita");
-                authRequest.Create(param);
+                string requestUrl = authRequest.Create(param);
 
                 //Auth
                 var authResult = await WebAuthenticator.AuthenticateAsync(
-                    new Uri($"{Constants.QiitaOauthUrl}?client_id={Constants.QiitaOauthClientID}&scope=read_qiita"),
-                    new Uri(Constants.QiitaRedirectUrl));
+                    new Uri(requestUrl),
+                    new Uri(Constants.QiitaCallBackUrl));
                 var accessToken = authResult?.AccessToken;
+                
             }
             catch (Exception ex)
             {
